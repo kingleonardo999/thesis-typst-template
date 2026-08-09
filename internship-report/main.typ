@@ -10,11 +10,13 @@
   font: (font-en, font-cn),
   size: 12pt,
   lang: "zh",
+  top-edge: "ascender",
+  bottom-edge: "descender"
 )
 
 #set par(
   justify: true,
-  leading: 20pt,
+  leading: 8pt,
   first-line-indent: (amount: 2em, all: true),
 )
 
