@@ -132,6 +132,169 @@ $ cases(
 
 在此撰写正文内容#multicite("chen2020gpu","huang2026SkillSelfPlay")。
 
-// ============================================================================
 // 后续章节以此类推...
 // ============================================================================
+
+// ============================================================================
+// 第三章：多元素编号测试（同一章内连续编号，编写正式报告时删除）
+// ============================================================================
+= 多元素编号测试
+
+本章在同一章内连续插入多张图、多个表格和多个代码块，验证编号是否按"图 章-序号"连续递增，且图/表/代码各自独立编号。
+
+== 多图测试
+
+第一章中已插入过图 1-1，本章第一张图应编号为图 3-1，随后连续编号为图 3-2、图 3-3。
+
+#fig("测试图片 A", [
+  #image("images/test-fig-a.svg", width: 40%)
+])
+
+#fig("测试图片 B", [
+  #image("images/test-fig-b.svg", width: 40%)
+])
+
+#fig("测试图片 C", [
+  #image("images/test-fig-c.svg", width: 40%)
+])
+
+== 多表测试
+
+表格在同一章内连续编号，本章表题应从表 3-1 开始。
+
+#tbl("配置对比", table(
+  columns: 3,
+  align: center,
+  stroke: 0.5pt,
+  [参数], [方案一], [方案二],
+  [延迟], [20ms], [35ms],
+  [吞吐], [800/s], [1200/s],
+  [成本], [低], [中],
+))
+
+#tbl("资源占用对比", table(
+  columns: 3,
+  align: center,
+  stroke: 0.5pt,
+  [资源], [方案一], [方案二],
+  [CPU], [40%], [65%],
+  [内存], [1.2GB], [2.1GB],
+  [磁盘], [5GB], [9GB],
+))
+
+== 多代码块测试
+
+代码块在同一章内连续编号，本章应从代码 3-1 开始。
+
+#codefig("Python 快速排序示例", [
+  ```python
+  def quicksort(arr):
+      if len(arr) <= 1:
+          return arr
+      pivot = arr[len(arr) // 2]
+      left = [x for x in arr if x < pivot]
+      middle = [x for x in arr if x == pivot]
+      right = [x for x in arr if x > pivot]
+      return quicksort(left) + middle + quicksort(right)
+  ```
+])
+
+#codefig("Rust 斐波那契示例", [
+  ```rust
+  fn fib(n: u32) -> u64 {
+      match n {
+          0 => 0,
+          1 => 1,
+          _ => fib(n - 1) + fib(n - 2),
+      }
+  }
+  ```
+])
+
+== 混合排列
+
+图、表、代码块交错排列时，各自的计数器互不影响、独立递增。如下应为图 3-4、表 3-3、代码 3-3。
+
+#fig("混合排列中的图", [
+  #image("images/电子科技大学-logo-512px.png", width: 30%)
+])
+
+#tbl("混合排列中的表", table(
+  columns: 2,
+  align: center,
+  stroke: 0.5pt,
+  [指标], [数值],
+  [准确率], [95.2%],
+))
+
+#codefig("混合排列中的代码", [
+  ```bash
+  echo "hello world"
+  ```
+])
+
+// ============================================================================
+// 第四章：跨章节编号重置测试（编写正式报告时删除）
+// ============================================================================
+= 跨章节编号重置
+
+新起一章后，图、表、代码块的编号应重置，从图 4-1、表 4-1、代码 4-1 重新开始，而不是延续上一章。
+
+== 重置后的图
+
+第三章最后一张图为图 3-4，本章第一张图应为图 4-1，同一章内继续则为图 4-2。
+
+#fig("跨章图片一", [
+  #image("images/test-fig-a.svg", width: 35%)
+])
+
+#fig("跨章图片二", [
+  #image("images/test-fig-b.svg", width: 35%)
+])
+
+#fig("跨章图片二", [
+  #image("images/test-fig-b.svg", width: 35%)
+])
+#fig("跨章图片二", [
+  #image("images/test-fig-b.svg", width: 35%)
+])
+#fig("跨章图片二", [
+  #image("images/test-fig-b.svg", width: 35%)
+])
+#fig("跨章图片二", [
+  #image("images/test-fig-b.svg", width: 35%)
+])
+#fig("跨章图片二", [
+  #image("images/test-fig-b.svg", width: 35%)
+])
+#fig("跨章图片二", [
+  #image("images/test-fig-b.svg", width: 35%)
+])
+#fig("跨章图片二", [
+  #image("images/test-fig-b.svg", width: 35%)
+])
+#fig("跨章图片二", [
+  #image("images/test-fig-b.svg", width: 35%)
+])
+#fig("跨章图片二", [
+  #image("images/test-fig-b.svg", width: 35%)
+])
+
+
+== 重置后的表与代码
+
+本章第一张表应为表 4-1，第一段代码应为代码 4-1。
+
+#tbl("跨章表格", table(
+  columns: 2,
+  align: center,
+  stroke: 0.5pt,
+  [项], [值],
+  [状态], [正常],
+))
+
+#codefig("跨章代码", [
+  ```javascript
+  console.log("chapter reset test");
+  ```
+])

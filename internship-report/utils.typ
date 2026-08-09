@@ -19,9 +19,9 @@
 #let header-state = state("header-state", none)
 
 // 图表代码按章编号计数器
-#let fig-num = state("fig-num", 0)
-#let tbl-num = state("tbl-num", 0)
-#let code-num = state("code-num", 0)
+#let fig-num = counter("fig-num")
+#let tbl-num = counter("tbl-num")
+#let code-num = counter("code-num")
 
 // 封面图片
 #let cover-image(path, width: 80%) = {
@@ -72,8 +72,9 @@
 // 图：图题在下，图片与图题不分离
 #let fig(cap, body) = context {
   let ch = counter(heading).get().at(0, default: 0)
-  let n = fig-num.get() + 1
-  fig-num.update(_ => n)
+  fig-num.step()
+  // 同一 context 内 get() 读到 step 前的值，故 +1 得到本次编号
+  let n = fig-num.get().first() + 1
 
   block(width: 100%, above: 6pt, below: 12pt, align(center, [
     // 图片与图题粘在一起，防止图题独留一页
@@ -85,8 +86,9 @@
 // 表：表题在上，表题与表体不分离
 #let tbl(cap, body) = context {
   let ch = counter(heading).get().at(0, default: 0)
-  let n = tbl-num.get() + 1
-  tbl-num.update(_ => n)
+  tbl-num.step()
+  // 同一 context 内 get() 读到 step 前的值，故 +1 得到本次编号
+  let n = tbl-num.get().first() + 1
 
   block(width: 100%, above: 12pt, below: 6pt, align(center, [
     // 表题与表体粘在一起，保证至少一行表体与标题同页
@@ -98,8 +100,9 @@
 // 代码块：标题居中在上，代码左对齐，标题与代码不分离，黑色实线边框包裹
 #let codefig(cap, body) = context {
   let ch = counter(heading).get().at(0, default: 0)
-  let n = code-num.get() + 1
-  code-num.update(_ => n)
+  code-num.step()
+  // 同一 context 内 get() 读到 step 前的值，故 +1 得到本次编号
+  let n = code-num.get().first() + 1
 
   block(width: 100%, above: 12pt, below: 6pt, [
     // 代码标题与代码粘在一起，保证至少一行代码与标题同页
