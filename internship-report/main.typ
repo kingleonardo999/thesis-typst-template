@@ -54,13 +54,11 @@
     } else {
       [第#counter(heading).display("一")章 #it.body]
     }
-    v(24pt)
     align(center, [
       #text(font: font-title, size: 15pt, weight: "regular")[#title]
     ])
     v(18pt)
   } else if it.level == 2 {
-    v(18pt)
     block(
       sticky: true,
       text(font: font-title, size: 14pt, weight: "regular")[
@@ -69,7 +67,6 @@
     )
     v(6pt)
   } else if it.level == 3 {
-    v(12pt)
     block(
       sticky: true,
       text(font: font-title, size: 14pt, weight: "regular")[
@@ -78,13 +75,13 @@
     )
     v(6pt)
   } else if it.level == 4 {
-    v(12pt)
     block(
       sticky: true,
       text(font: font-cn, size: 12pt, weight: "regular")[
         #counter(heading).display() #it.body
       ],
     )
+    v(6pt)
   }
 }
 
@@ -123,7 +120,7 @@
 #header-state.update("目 录")
 #pagebreak()
 #align(center, [
-  #text(font: font-title, size: 16pt, weight: "bold")[目 录]
+  #text(font: (font-en, font-title), size: 15pt, weight: "bold")[目 录]
 ])
 #v(10pt)
 #outline(target: heading, indent: 2em, title: none)
@@ -136,4 +133,6 @@
 #header-state.update("参考文献")
 #pagebreak()
 #heading(level: 1, numbering: none)[参考文献]
+// 参考文献字号：五号 (10.5pt)
+#set text(size: 10.5pt)
 #gb7714-bibliography(title: none)

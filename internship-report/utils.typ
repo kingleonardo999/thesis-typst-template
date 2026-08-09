@@ -39,13 +39,16 @@
   let is-odd = calc.rem(page-num, 2) == 1
   let current = header-state.get()
 
-  let header-text = if current != none {
+  let header-text = if not is-odd {
+    // 偶数页页眉固定为文档标题
+    doc-title
+  } else if current != none {
     current
   } else {
     let chapters = query(heading.where(level: 1)).filter(
       ch => ch.location().page() <= physical-page,
     )
-    if is-odd and chapters.len() > 0 {
+    if chapters.len() > 0 {
       let ch = chapters.last()
       let ch-num = counter(heading).at(ch.location()).first()
       [第#numbering("一", ch-num)章 #ch.body]
@@ -57,7 +60,7 @@
   block(
     width: 100%,
     [
-      #text(font: font-cn, size: 10.5pt, align(center, header-text))
+      #text(font: (font-en, font-cn), size: 10.5pt, align(center, header-text))
       #v(-8pt)
       #line(length: 100%, stroke: 1pt + black)
     ],
@@ -79,7 +82,7 @@
   block(width: 100%, above: 6pt, below: 12pt, align(center, [
     // 图片与图题粘在一起，防止图题独留一页
     #block(sticky: true, above: 6pt, below: 12pt, body)
-    #text(font: font-cn, size: 10.5pt)[图#{ ch }-#{ n } #cap]
+    #text(font: (font-en, font-cn), size: 10.5pt)[图#{ ch }-#{ n } #cap]
   ]))
 }
 
@@ -92,7 +95,7 @@
 
   block(width: 100%, above: 12pt, below: 6pt, align(center, [
     // 表题与表体粘在一起，保证至少一行表体与标题同页
-    #block(sticky: true, above: 12pt, below: 6pt, text(font: font-cn, size: 10.5pt)[表#{ ch }-#{ n } #cap])
+    #block(sticky: true, above: 12pt, below: 6pt, text(font: (font-en, font-cn), size: 10.5pt)[表#{ ch }-#{ n } #cap])
     #body
   ]))
 }
@@ -106,7 +109,7 @@
 
   block(width: 100%, above: 12pt, below: 6pt, [
     // 代码标题与代码粘在一起，保证至少一行代码与标题同页
-    #block(sticky: true, width: 100%, above: 12pt, below: 6pt, align(center, text(font: font-cn, size: 10.5pt)[代码#{ ch }-#{ n } #cap]))
+    #block(sticky: true, width: 100%, above: 12pt, below: 6pt, align(center, text(font: (font-en, font-cn), size: 10.5pt)[代码#{ ch }-#{ n } #cap]))
     #rect(
       stroke: 1pt + black,
       width: 100%,

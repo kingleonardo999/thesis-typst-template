@@ -5,7 +5,7 @@
 #set page(header: report-header, footer: report-footer, numbering: "I")
 #counter(page).update(1)
 #align(center, [
-  #text(font: font-title, size: 16pt, weight: "bold")[摘 要]
+  #text(font: (font-en, font-title), size: 15pt, weight: "bold")[摘 要]
 ])
 #v(10pt)
 #par(justify: true, first-line-indent: 2em)[
@@ -21,7 +21,7 @@
 #header-state.update("ABSTRACT")
 #pagebreak()
 #align(center, [
-  #text(font: font-title, size: 16pt, weight: "bold")[ABSTRACT]
+  #text(font: (font-en, font-title), size: 15pt, weight: "bold")[ABSTRACT]
 ])
 #v(10pt)
 #text(font: font-en)[
