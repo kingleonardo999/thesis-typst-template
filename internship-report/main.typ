@@ -17,6 +17,7 @@
 #set par(
   justify: true,
   leading: 8pt,
+  spacing: 8pt,
   first-line-indent: (amount: 2em, all: true),
 )
 
