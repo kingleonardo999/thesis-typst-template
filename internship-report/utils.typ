@@ -117,7 +117,7 @@
       [
         // 仅在 codefig 内生效：英文 Consolas 五号，中文宋体五号，单倍行距
         #show raw: set text(font: (font-code, font-cn), size: 10.5pt)
-        #show raw: set par(leading: 1em)
+        #show raw: set par(leading: 0.2em)
         #align(left, body)
       ],
     )
