@@ -11,7 +11,9 @@
 
 ## 快速开始
 
-### 安装 Typst
+### 安装 Typst编译器
+
+**命令行包管理器安装**
 
 ```bash
 # Windows (scoop)
@@ -23,6 +25,10 @@ brew install typst
 # Linux
 sudo apt install typst
 ```
+
+**Typst Github Releases平台**
+
+从`github`下载相应系统的二进制文件, 解压后把可执行文件所在目录加入`PATH` : https://github.com/typst/typst/releases
 
 ### 编译
 
